@@ -1,10 +1,12 @@
 # 🕰️ PiClock 2.0
 
-A minimalist touchscreen and web-controlled information clock for Raspberry Pi with an Adafruit Character LCD Plate. Designed for household use and inspired by embedded systems UI simplicity.
+A minimalist, web-controlled information clock for Raspberry Pi with an Adafruit Character LCD Plate. Designed for household use and inspired by embedded systems UI simplicity.
 
 ![Web UI Screenshot](assets/screenshot.png)
 
 ![PiClock Build](assets/piclock.jpg)
+
+![Weather Display](assets/weather.jpg)
 
 ---
 
