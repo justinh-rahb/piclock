@@ -1,0 +1,15 @@
+[Unit]
+Description=PiClock with Web Control
+After=network.target
+
+[Service]
+ExecStart=/opt/piclock/start_all.sh
+WorkingDirectory=/opt/piclock
+StandardOutput=inherit
+StandardError=inherit
+Restart=on-failure
+User=pi
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target

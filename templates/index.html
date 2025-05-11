@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PiClock Control</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header-container">
+            <div class="logo-title">
+                <svg width="40" height="40" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="logo">
+                    <circle cx="100" cy="100" r="95" fill="#2f2f2f"/>
+                    <circle cx="100" cy="100" r="85" fill="#fff"/>
+                    <circle cx="100" cy="100" r="6" fill="#333"/>
+                    <line x1="100" y1="100" x2="100" y2="50" stroke="#333" stroke-width="8" stroke-linecap="round"/>
+                    <line x1="100" y1="100" x2="140" y2="100" stroke="#d32f2f" stroke-width="6" stroke-linecap="round"/>
+                </svg>
+                <div class="title-group">
+                    <h1>PiClock Control</h1>
+                    <p class="timestamp">{{ now }}</p>
+                </div>
+            </div>
+        </div>
+
+        <form method="post">
+            <div class="section">
+                <h2>Custom Message</h2>
+                <label for="message">Set Message:</label>
+                <input type="text" name="message" value="{{ current }}">
+                <div class="button-row">
+                    <input type="submit" value="Set Message" class="button set">
+                    <button name="clear" value="true" type="submit" class="button reset">Clear Message</button>
+                </div>
+            </div>
+        </form>
+
+        <form method="post">
+            <div class="section">
+                <h2>Backlight</h2>
+                <label for="color">Set Backlight Color:</label>
+                <select name="color">
+                    {% for name in colors %}
+                        <option value="{{ name }}" {% if name == selected %}selected{% endif %}>{{ name }}</option>
+                    {% endfor %}
+                </select>
+                <div class="button-row">
+                    <input type="submit" value="Set Backlight" class="button set">
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
