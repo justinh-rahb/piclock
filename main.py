@@ -163,7 +163,7 @@ def apply_color():
     time.sleep(1.5)
 
 # Boot message
-lcd.message("  PiClock v2.0\n Wife Edition")
+lcd.message("  PiClock v2.0\n= Wife Edition =")
 time.sleep(2)
 lcd.clear()
 
@@ -188,13 +188,6 @@ try:
                     lcd.clear()
                     in_menu = False
                 time.sleep(0.1)
-#        else:
-#            draw_main()
-#            for _ in range(10):
-#                if lcd.is_pressed(BUTTONS["select"]):
-#                    in_menu = True
-#                    break
-#                time.sleep(0.1)
         else:
             draw_main()
 
