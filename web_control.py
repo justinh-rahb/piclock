@@ -69,7 +69,6 @@ def index():
                 apply_color(color)
             return redirect(url_for('index'))
 
-    #return render_template("index.html", current=current_msg, colors=COLORS.keys(), selected=selected_color)
     return render_template("index.html", current=current_msg, colors=COLORS.keys(), selected=selected_color, now=now)
 
 if __name__ == "__main__":
