@@ -22,6 +22,7 @@ h1, h2 {
 
 h1 {
     font-size: 1.8em;
+    margin-bottom: 0;
 }
 
 h2 {
@@ -96,20 +97,20 @@ input:focus, select:focus {
 
 /* Green for message set */
 .set {
-    background-color: #66bb6a;
+    background-color: #66bb6a !important;
 }
 
 .set:hover {
-    background-color: #4caf50;
+    background-color: #4caf50 !important;
 }
 
 /* Red for clear */
 .reset {
-    background-color: #ef5350;
+    background-color: #ef5350 !important;
 }
 
 .reset:hover {
-    background-color: #d32f2f;
+    background-color: #d32f2f !important;
 }
 
 .header-container {
@@ -122,13 +123,12 @@ input:focus, select:focus {
 
 .logo-title {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .logo {
     margin-right: 15px;
-    align-self: flex-start;
-    padding-top: 3px; /* adjust to nudge slightly */
+    vertical-align: middle;
 }
 
 .title-group {

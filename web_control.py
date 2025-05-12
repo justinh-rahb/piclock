@@ -1,11 +1,8 @@
 from flask import Flask, request, render_template, redirect, url_for
 import os
-from datetime import datetime
 
 app = Flask(__name__)
 app.static_folder = 'static'
-
-now=datetime.now().strftime("%I:%M %p • %B %d, %Y")
 
 # Paths
 MESSAGE_PATH = "/opt/piclock/msg.txt"
@@ -69,7 +66,7 @@ def index():
                 apply_color(color)
             return redirect(url_for('index'))
 
-    return render_template("index.html", current=current_msg, colors=COLORS.keys(), selected=selected_color, now=now)
+    return render_template("index.html", current=current_msg, colors=COLORS.keys(), selected=selected_color)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)
