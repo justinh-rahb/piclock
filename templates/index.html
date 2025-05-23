@@ -22,32 +22,79 @@
             </div>
         </div>
 
-        <form method="post">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="message-banner-container"> {# A container for all flashed messages #}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <form method="post"> <!-- This form posts to / -->
             <div class="section">
-                <h2>Custom Message</h2>
-                <label for="message">Set Message:</label>
-                <input type="text" name="message" value="{{ current }}">
+                <h2>Display & Location</h2>
+                <label for="message">Set Message (for LCD):</label>
+                <input type="text" name="message" value="{{ current_msg }}">
+                
+                <label for="location">Set Location (for location.txt):</label>
+                <input type="text" name="location" value="{{ current_location }}">
+
                 <div class="button-row">
-                    <input type="submit" value="Set Message" class="button set">
+                    <input type="submit" value="Save Display & Location" class="button set">
                     <button name="clear" value="true" type="submit" class="button reset">Clear Message</button>
                 </div>
             </div>
         </form>
 
-        <form method="post">
+        <form method="post"> <!-- This form posts to / -->
             <div class="section">
-                <h2>Backlight</h2>
+                <h2>Backlight Color</h2>
                 <label for="color">Set Backlight Color:</label>
                 <select name="color">
                     {% for name in colors %}
-                        <option value="{{ name }}" {% if name == selected %}selected{% endif %}>{{ name }}</option>
+                        <option value="{{ name }}" {% if name == selected_color %}selected{% endif %}>{{ name }}</option>
                     {% endfor %}
                 </select>
                 <div class="button-row">
-                    <input type="submit" value="Set Backlight" class="button">
+                    <input type="submit" value="Set Backlight" class="button"> <!-- This button is fine, POSTs to / and web_control.py handles "color" -->
                 </div>
             </div>
         </form>
+
+        <div class="section">
+            <h2>System Configuration</h2>
+
+            <form method="post" action="{{ url_for('set_timezone_route') }}">
+                <label for="timezone">Set System Timezone:</label>
+                <select name="timezone">
+                    {% for tz in available_timezones %}
+                        <option value="{{ tz }}" {% if tz == current_timezone %}selected{% endif %}>{{ tz }}</option>
+                    {% endfor %}
+                </select>
+                <div class="button-row">
+                    <input type="submit" value="Set Timezone" class="button">
+                </div>
+            </form>
+
+            <hr class="separator">
+
+            <form method="post" action="{{ url_for('set_ntp_server_route') }}">
+                <label for="ntp_server">Set NTP Server(s) (space separated):</label>
+                <input type="text" name="ntp_server" value="{{ current_ntp_server }}">
+                <div class="button-row">
+                    <input type="submit" value="Set NTP Server" class="button">
+                </div>
+            </form>
+            
+            <form method="post" action="{{ url_for('sync_ntp_route') }}" style="margin-top: 10px;">
+                 <div class="button-row">
+                    <button type="submit" class="button">Sync NTP Now</button>
+                </div>
+            </form>
+        </div>
+
     </div>
 </body>
 </html>
