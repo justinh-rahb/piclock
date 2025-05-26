@@ -156,3 +156,37 @@ input:focus, select:focus {
         font-size: 1.5em;
     }
 }
+
+/* Styles for flashed messages */
+.message-banner-container { /* Renamed from .message-banner in instructions to match HTML */
+    padding: 10px 0; /* Padding only top/bottom, container handles side padding */
+    margin-bottom: 15px;
+    width: 100%; /* Ensure it takes full width within its parent */
+}
+
+.alert {
+    padding: 12px 18px; /* Slightly more padding */
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+    border-radius: 5px; /* Consistent with other elements */
+    font-size: 0.95em;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Subtle shadow */
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert-error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.alert-info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+}
