@@ -8,7 +8,7 @@ WorkingDirectory=/opt/piclock
 StandardOutput=inherit
 StandardError=inherit
 Restart=on-failure
-User=pi
+User=root
 Environment=PYTHONUNBUFFERED=1
 
 [Install]
